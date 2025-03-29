@@ -3,7 +3,9 @@ import Link from "next/link";
 const Header = () => {
   return (
     <header className="bg-white shadow-lg p-4 text-white flex items-center">
-      <img src="/sazanami_dev.svg" alt="" className="h-10" />
+      <Link href="/Top" className="flex items-center">
+        <img src="/sazanami_dev.svg" alt="Logo" className="h-10" />
+      </Link>
       <nav className="ml-auto">
         <ul className="flex space-x-4">
           <li>
