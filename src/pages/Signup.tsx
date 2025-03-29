@@ -36,7 +36,7 @@ export default function Signup() {
         <h1 className="text-2xl font-bold mb-4 text-center">サインアップ</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block font-medium mb-1">メールアドレス:</label>
+            <label className="block font-medium mb-1">メールアドレス</label>
             <input
               type="email"
               value={email}
@@ -47,7 +47,7 @@ export default function Signup() {
           </div>
 
           <div>
-            <label className="block font-medium mb-1">クラス名:</label>
+            <label className="block font-medium mb-1">クラス名</label>
             <input
               type="text"
               value={classname}
@@ -58,7 +58,7 @@ export default function Signup() {
           </div>
 
           <div>
-            <label className="block font-medium mb-1">クラス番号:</label>
+            <label className="block font-medium mb-1">クラス番号</label>
             <input
               type="text"
               value={classnumber}
@@ -69,7 +69,7 @@ export default function Signup() {
           </div>
 
           <div>
-            <label className="block font-medium mb-1">名前:</label>
+            <label className="block font-medium mb-1">名前</label>
             <input
               type="text"
               value={name}
@@ -80,7 +80,7 @@ export default function Signup() {
           </div>
 
           <div>
-            <label className="block font-medium mb-1">学籍番号:</label>
+            <label className="block font-medium mb-1">学籍番号</label>
             <input
               type="text"
               value={studentid}
