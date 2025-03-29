@@ -89,13 +89,14 @@ export default function Signup() {
               className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
           </div>
-
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors"
-          >
-            登録
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-10 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
+            >
+              登録
+            </button>
+          </div>
         </form>
       </div>
     </div>
