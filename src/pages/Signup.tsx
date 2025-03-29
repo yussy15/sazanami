@@ -58,11 +58,22 @@ export default function Signup() {
           </div>
 
           <div>
-            <label className="block font-medium mb-1">クラス番号</label>
+            <label className="block font-medium mb-1">出席番号</label>
             <input
               type="text"
               value={classnumber}
               onChange={(e) => setClassnumber(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block font-medium mb-1">学籍番号</label>
+            <input
+              type="text"
+              value={studentid}
+              onChange={(e) => setStudentid(e.target.value)}
               required
               className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
@@ -79,16 +90,7 @@ export default function Signup() {
             />
           </div>
 
-          <div>
-            <label className="block font-medium mb-1">学籍番号</label>
-            <input
-              type="text"
-              value={studentid}
-              onChange={(e) => setStudentid(e.target.value)}
-              required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
-            />
-          </div>
+          
           <div className="flex justify-center">
             <button
               type="submit"
