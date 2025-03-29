@@ -2,14 +2,14 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="bg-white shadow-lg p-4 text-white flex items-center">
+    <header className="fixed top-0 w-full bg-white shadow-sm p-4 text-white flex items-center z-50">
       <Link href="/Top" className="flex items-center">
         <img src="/sazanami_dev.svg" alt="Logo" className="h-10" />
       </Link>
       <nav className="ml-auto">
         <ul className="flex space-x-4">
           <li>
-            <Link href="/Top" className="text-gray-500  rounded-lg p-2 hover:bg-black hover:text-white transition duration-500 ease-in-out">
+            <Link href="/Top" className="text-gray-500 rounded-lg p-2 hover:bg-black hover:text-white transition duration-500 ease-in-out">
               <span className="mx-3">Top</span>
             </Link>
           </li>
