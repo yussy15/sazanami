@@ -29,7 +29,7 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
+      <div className="bg-white p-6 rounded shadow-md w-full max-w-md  rounded-xl">
         <div className="flex justify-center mb-6">
           <img src="/sazanami_dev.svg" alt="Logo" className="h-16" />
         </div>
