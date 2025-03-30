@@ -1,8 +1,9 @@
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { withAuth } from '../utils/withAuth';
 
-export default function Signup() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [classname, setClassname] = useState("");
   const [classnumber, setClassnumber] = useState("");
@@ -11,22 +12,22 @@ export default function Signup() {
   const { data: session } = useSession();
   const router = useRouter();
   
-  //アカウントから情報を取得
+  // アカウントから情報を取得
   useEffect(() => {
     if (session?.user?.email) {
-      //メールアドレス取得
+      // メールアドレス取得
       setEmail(session.user.email);
-      //メールアドレスから学籍番号取得
+      // メールアドレスから学籍番号取得
       setStudentid(session.user.email.substring(2, 8));
     }
     if (session?.user?.name) {
-      //名前に数字が含まれるときはクラス名と出席番号を取得
-      if(/\d/.test(session.user.name)) {
-          setClassname(session.user.name.substring(0,3));
-          setClassnumber(session.user.name.substring(4,6));
-          setName(session.user.name.substring(6));
-      }else{
-        //名前に数字が含まれないときはそのまま名前を取得
+      // 名前に数字が含まれるときはクラス名と出席番号を取得
+      if (/\d/.test(session.user.name)) {
+        setClassname(session.user.name.substring(0, 3));
+        setClassnumber(session.user.name.substring(4, 6));
+        setName(session.user.name.substring(6));
+      } else {
+        // 名前に数字が含まれないときはそのまま名前を取得
         setName(session.user.name);
       }
     }
@@ -50,9 +51,13 @@ export default function Signup() {
     }
   };
 
+  if (!session) {
+    return <p>認証されていません。ログインしてください。</p>;
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 shadow-md w-full max-w-md  rounded-xl">
+      <div className="bg-white p-6 shadow-md w-full max-w-md rounded-xl">
         <div className="flex justify-center mb-6">
           <img src="/sazanami_dev.svg" alt="Logo" className="h-16" />
         </div>
@@ -113,7 +118,6 @@ export default function Signup() {
             />
           </div>
 
-          
           <div className="flex justify-center mt-10">
             <button
               type="submit"
@@ -127,3 +131,5 @@ export default function Signup() {
     </div>
   );
 }
+
+export default withAuth(Signup);
