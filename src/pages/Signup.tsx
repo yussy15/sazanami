@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useSession } from 'next-auth/react';
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Signup() {
@@ -7,7 +8,29 @@ export default function Signup() {
   const [classnumber, setClassnumber] = useState("");
   const [name, setName] = useState("");
   const [studentid, setStudentid] = useState("");
+  const { data: session } = useSession();
   const router = useRouter();
+  
+  //アカウントから情報を取得
+  useEffect(() => {
+    if (session?.user?.email) {
+      //メールアドレス取得
+      setEmail(session.user.email);
+      //メールアドレスから学籍番号取得
+      setStudentid(session.user.email.substring(2, 8));
+    }
+    if (session?.user?.name) {
+      //名前に数字が含まれるときはクラス名と出席番号を取得
+      if(/\d/.test(session.user.name)) {
+          setClassname(session.user.name.substring(0,3));
+          setClassnumber(session.user.name.substring(4,6));
+          setName(session.user.name.substring(6));
+      }else{
+        //名前に数字が含まれないときはそのまま名前を取得
+        setName(session.user.name);
+      }
+    }
+  }, [session]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
