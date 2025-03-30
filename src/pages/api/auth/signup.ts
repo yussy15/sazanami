@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     // データベース接続とINSERT処理
     const result = await pool.query(
-      'INSERT INTO users (email, classname, classnumber, name, studentid) VALUES ($1, $2, $3, $4, $5)',
+      'INSERT INTO users (email, class_name, class_number, name, student_id) VALUES ($1, $2, $3, $4, $5)',
       [email, classname, classnumber, name, studentid]
     );
     
