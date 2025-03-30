@@ -29,7 +29,7 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded shadow-md w-full max-w-md  rounded-xl">
+      <div className="bg-white p-6 shadow-md w-full max-w-md  rounded-xl">
         <div className="flex justify-center mb-6">
           <img src="/sazanami_dev.svg" alt="Logo" className="h-16" />
         </div>
@@ -91,10 +91,10 @@ export default function Signup() {
           </div>
 
           
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-10">
             <button
               type="submit"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-10 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
+              className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-l from-[#29323c] to-[#485563] px-10 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
             >
               登録
             </button>
