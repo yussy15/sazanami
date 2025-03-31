@@ -24,7 +24,6 @@ export default async function handler(
       case "admin":
       case "manager":
         const result = await pool.query("SELECT * FROM users");
-        console.log(result.rows);
         return res.status(200).json({ members: result.rows });
       default:
         const result2 = await pool.query("SELECT name FROM users");
