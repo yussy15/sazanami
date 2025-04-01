@@ -1,7 +1,9 @@
+"use client";
+
 import { signIn, useSession } from 'next-auth/react';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import styles from '../styles/index.module.css';
+import { useRouter } from 'next/navigation';
+import styles from '../styles/page.module.css';
 
 export default function Home() {
   const { data: session } = useSession();
