@@ -26,9 +26,9 @@ export default function Home() {
           const result = await response.json();
 
           if (result.registered) {
-            router.push("/top"); // 登録済みなら /top
+            router.push("/top");
           } else {
-            router.push("/signup"); // 未登録なら /signup
+            router.push("/signup");
           }
         } catch (error) {
           console.error("ユーザー確認エラー:", error);
