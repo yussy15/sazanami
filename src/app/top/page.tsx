@@ -1,11 +1,14 @@
-"use client";
+// app/top/page.tsx
+
+"use client";  // クライアントサイドコンポーネントにするため
 
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import styles from "../../styles/top.module.css";
+import Header from "../components/Header";  // Headerコンポーネントをインポート
 
-export default function top() {
+const Top: React.FC = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -27,9 +30,12 @@ export default function top() {
 
   return (
     <div className={styles.container}>
+      <Header />  {/* ここでHeaderコンポーネントを表示 */}
       <h1 className={styles.title}>これが一応トップページ</h1>
       <h3 className={styles.subtitle}>ようこそ、{session?.user?.name}さん！</h3>
       <button onClick={handleSignOut} className={styles.button}>ログアウト</button>
     </div>
   );
-}
+};
+
+export default Top;
