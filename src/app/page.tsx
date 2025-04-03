@@ -41,6 +41,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <title>さざなみポータル</title>
       <h1 className={styles.title}>さざなみポータル</h1>
       <h3 className={styles.subtitle}>組織内のGoogleアカウントのみが認証可能です</h3>
       <button

@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import Header from "../components/Header";
 
 type Member = {
   name: string;
@@ -37,7 +38,9 @@ export default function MemberPage() {
 
   return (
     <div className="mt-20 flex flex-col items-center justify-center min-h-screen bg-gray-100 space-y-4">
-      <h1 className="text-xl font-bold mb-4">Member Page</h1>
+      <title>所属メンバー</title>
+      <Header />
+      <h1 className="text-xl font-bold mb-4">所属メンバー</h1>
       {members.map((member, index) => (
         <div key={index} className="bg-white p-4 shadow-md rounded w-full">
           <p>名前: {member.name}</p>

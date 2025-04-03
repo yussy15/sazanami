@@ -60,6 +60,7 @@ export default function Signup() {
         <div className="flex justify-center mb-6">
           <img src="/sazanami_dev.svg" alt="Logo" className="h-16" />
         </div>
+        <title>サインアップ</title>
         <h1 className="text-2xl font-bold mb-4 text-center">サインアップ</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
