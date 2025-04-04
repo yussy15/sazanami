@@ -1,10 +1,7 @@
+// utils/withAuth.ts
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { ReactNode, useEffect } from 'react';
-
-type WithAuthProps = {
-  children: ReactNode;
-};
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export function withAuth(Component: React.FC) {
   return function ProtectedComponent(props: any) {
@@ -15,7 +12,7 @@ export function withAuth(Component: React.FC) {
       if (status === 'unauthenticated') {
         router.push('/');
       }
-    }, [session, status, router]);
+    }, [status, router]);
 
     if (status === 'loading') {
       return <p>Loading...</p>;

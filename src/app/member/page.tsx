@@ -1,6 +1,7 @@
-import { useSession } from 'next-auth/react';
+"use client";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { withAuth } from '../utils/withAuth';
+import Header from "../components/Header";
 
 type Member = {
   name: string;
@@ -9,9 +10,9 @@ type Member = {
   class_number: string;
   student_id: string;
   role: string;
-}
+};
 
-function MemberPage() {
+export default function MemberPage() {
   const [members, setMembers] = useState<Member[]>([]);
   const { data: session } = useSession();
 
@@ -22,31 +23,34 @@ function MemberPage() {
         const data = await response.json();
         setMembers(data.members || []);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching members:", error);
       }
     }
 
-    fetchMembers();
-  }, []);
+    if (session) {
+      fetchMembers();
+    }
+  }, [session]);
 
   if (!session) {
     return <p>認証されていません。ログインしてください。</p>;
   }
+
   return (
     <div className="mt-20 flex flex-col items-center justify-center min-h-screen bg-gray-100 space-y-4">
-      <h1 className="text-xl font-bold mb-4">Member Page</h1>
+      <title>所属メンバー</title>
+      <Header />
+      <h1 className="text-xl font-bold mb-4">所属メンバー</h1>
       {members.map((member, index) => (
         <div key={index} className="bg-white p-4 shadow-md rounded w-full">
           <p>名前: {member.name}</p>
-          <p>{(member.email)? `メール:${member.email}`:<div></div>}</p>
-          <p>{(member.class_name)? `クラス名:${member.class_name}`:<div></div>}</p>
-          <p>{(member.class_number)? `クラス番号:${member.class_number}`:<div></div>}</p>
-          <p>{(member.student_id)? `学籍番号:${member.student_id}`:<div></div>}</p>
-          <p>{(member.role)? `ロール:${member.role}`:<div></div>}</p>
+          {member.email && <p>メール: {member.email}</p>}
+          {member.class_name && <p>クラス名: {member.class_name}</p>}
+          {member.class_number && <p>クラス番号: {member.class_number}</p>}
+          {member.student_id && <p>学籍番号: {member.student_id}</p>}
+          {member.role && <p>ロール: {member.role}</p>}
         </div>
       ))}
     </div>
   );
 }
-
-export default withAuth(MemberPage);

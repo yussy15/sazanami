@@ -1,10 +1,13 @@
 /* Signup.module.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ローカルクラスを使ってスタイルを適用 */
 .title {
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  color: #333 !important;
+  margin-bottom: 20px !important;
 }
 
 .container {
@@ -26,7 +29,6 @@
   box-sizing: border-box;
 }
 
-/* labelのローカルクラス */
 .label {
   display: block;
   margin-bottom: 10px;
@@ -35,7 +37,6 @@
   color: #555;
 }
 
-/* inputのローカルクラス */
 .input {
   width: 100%;
   padding: 10px;
@@ -46,7 +47,6 @@
   font-size: 14px;
 }
 
-/* buttonのローカルクラス */
 .button {
   width: 100%;
   padding: 12px;
