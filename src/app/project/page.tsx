@@ -1,3 +1,7 @@
+// app/project/page.tsx
+
+'use client'; // クライアントコンポーネントとして指定
+
 import React, { useState, useEffect } from "react";
 
 type Project = {
@@ -9,12 +13,12 @@ export default function ProjectPage() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    // ここでプロジェクト一覧を取得するロジックを追記してください
+    // ここでプロジェクト一覧を取得するロジックを追記
     setProjects([{ id: 1, name: "サンプルプロジェクト" }]);
   }, []);
 
   const handleCreateProject = () => {
-    // プロジェクト作成のロジックや画面遷移を追加してください
+    // プロジェクト作成のロジックや画面遷移を追加
     alert("プロジェクト作成ボタンが押されました");
   };
 

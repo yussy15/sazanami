@@ -1,7 +1,7 @@
-import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -10,8 +10,11 @@ export default NextAuth({
   ],
   callbacks: {
     async signIn({ user }) {
-      const domain = user.email?.split('@')[1];
+      const domain = user.email?.split("@")[1];
       return domain === process.env.AUTHORIZED_DOMAIN;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
