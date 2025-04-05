@@ -3,6 +3,7 @@
 'use client'; // クライアントコンポーネントとして指定
 
 import React, { useState, useEffect } from "react";
+import Header from "../components/Header";
 
 type Project = {
   id: number;
@@ -94,6 +95,8 @@ export default function ProjectPage() {
 
   return (
     <div className="pt-20 px-4">
+      <Header />
+      <title>プロジェクト一覧</title>
       <h1 className="text-xl font-bold mb-4">所属しているプロジェクト</h1>
       <ul>
         {projects.map((project) => (
