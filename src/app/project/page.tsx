@@ -15,10 +15,29 @@ export default function ProjectPage() {
   const [isModalOpen, setIsModalOpen] = useState(false); // モーダルの開閉状態
   const [newProjectName, setNewProjectName] = useState(""); // 新しいプロジェクト名
   const [newProjectDescription, setNewProjectDescription] = useState(""); // 新しいプロジェクトの説明
-
   useEffect(() => {
     // ここでプロジェクト一覧を取得するロジックを追記
-    setProjects([{ id: 1, name: "サンプルプロジェクト", description: "これはサンプルプロジェクトです。" }]);
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("/api/project", {
+          method: "GET",
+        });
+  
+        if (!response.ok) {
+          const errorData = await response.json();
+          alert(`エラー: ${errorData.error}`);
+          return;
+        }
+  
+        const projects = await response.json();
+        setProjects(projects); // プロジェクト一覧を状態に設定
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        alert("プロジェクト一覧の取得中にエラーが発生しました。");
+      }
+    };
+  
+    fetchProjects();
   }, []);
 
   const handleCreateProject = () => {
@@ -26,27 +45,52 @@ export default function ProjectPage() {
     setIsModalOpen(true);
   };
 
-  const handleSaveProject = () => {
+  const handleSaveProject = async () => {
     // プロジェクト作成のロジックや画面遷移を追加
     if (newProjectName.trim() === "") {
       alert("プロジェクト名を入力してください");
       return;
     }
 
-    const newProject = {
-      id: projects.length + 1, // 仮のID
-      name: newProjectName,
-      description: newProjectDescription,
-    };
-    setProjects([...projects, newProject]);
-    setNewProjectName(""); // 入力フィールドをリセット
+    try {
+      
+      const response = await fetch("/api/project", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({newProjectName,newProjectDescription}), // ユーザーのメールアドレスを含める
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(`エラー: ${errorData.error}`);
+        return;
+      }
+    
+      const savedProject = await response.json();
+      
+      console.log("Saved Project:", savedProject); // デバッグ用
+    setProjects([...projects, savedProject]); // 新しいプロジェクトをリストに追加
+    
+    setNewProjectName(""); // プロジェクト名フィールドをリセット
     setNewProjectDescription(""); // 説明フィールドをリセット
     setIsModalOpen(false); // モーダルを閉じる
+  } catch (error) {
+    console.error("Error saving project:", error);
+    alert("プロジェクトの保存中にエラーが発生しました。");
+  }
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false); // モーダルを閉じる
   };
+
+  const handleDetailProject = (projectId: number) => {
+    // プロジェクト詳細画面に遷移するロジックを追加 
+    // 例: router.push(`/project/${projectId}`);
+    alert(`プロジェクトID: ${projectId} の詳細画面に遷移`);
+  }
 
   return (
     <div className="pt-20 px-4">
@@ -54,12 +98,13 @@ export default function ProjectPage() {
       <ul>
         {projects.map((project) => (
           <div
-            className="flex items-center justify-between bg-white p-4 shadow-md rounded mb-2"
             key={project.id}
-          >
+            className="flex items-center justify-between bg-white p-4 shadow-md rounded mb-2">
             <li className="text-lg font-bold">{project.name}</li>
             <p className="text-sm text-gray-600">{project.description}</p>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded">
+            <button
+            onClick={() => handleDetailProject(project.id)}
+            className="bg-blue-500 text-white px-4 py-2 rounded">
               プロジェクト詳細
             </button>
           </div>
