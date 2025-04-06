@@ -23,10 +23,10 @@ export async function GET(req: Request) {
       case "admin":
       case "manager":
         const allMembers = await pool.query("SELECT * FROM users");
-        return NextResponse.json({ members: allMembers.rows });
+        return NextResponse.json({ members: allMembers.rows, role: result.rows[0].role });
       default:
         const basicMembers = await pool.query("SELECT name FROM users");
-        return NextResponse.json({ members: basicMembers.rows });
+        return NextResponse.json({ members: basicMembers.rows, role: result.rows[0].role });
     }
   } catch (error) {
     console.error("Database error:", error);
