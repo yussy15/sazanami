@@ -30,6 +30,14 @@ export async function POST(req: Request) {
       );
     }
 
+    // 自分ではロールを変更できないようにする
+    if (email === useremail) {
+      return NextResponse.json(
+        { error: "自分のロールを変更することはできません。" },
+        { status: 403 }
+      );
+    }
+
     // 管理者の権限チェック
     if (userRole === "admin") {
       await pool.query("UPDATE users SET role = $1 WHERE email = $2", [

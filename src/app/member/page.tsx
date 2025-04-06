@@ -33,8 +33,13 @@ export default function MemberPage() {
       fetchMembers();
     }
   }, [session]);
+  
 
   const handleRoleChange = async (email: string, newRole: string) => {
+    if (email === session.user.email) {
+      alert("自分のロールは変更できません。");
+      return; // 処理を中断
+    }
     const confirmChange = window.confirm(
       `ユーザー ${email} のロールを ${newRole} に変更しますか？`
     );
@@ -90,6 +95,7 @@ export default function MemberPage() {
               value={member.role || ""}
               onChange={(e) => handleRoleChange(member.email, e.target.value)}
               className="border border-gray-300 rounded px-2 py-1"
+              disabled={member.email === session?.user?.email} // 自分のロール変更を無効化
             >
               <option value="member">メンバー</option>
               <option value="manager">運営</option>
@@ -101,6 +107,7 @@ export default function MemberPage() {
               value={member.role || ""}
               onChange={(e) => handleRoleChange(member.email, e.target.value)}
               className="border border-gray-300 rounded px-2 py-1"
+              disabled={member.email === session?.user?.email} // 自分のロール変更を無効化
             >
               <option value="member">メンバー</option>
               <option value="manager">運営</option>
