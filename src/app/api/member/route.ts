@@ -1,8 +1,7 @@
 import { Pool } from "pg";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
-
+import { authOptions } from "../../../authOptions";
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
