@@ -7,7 +7,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-export async function GET(req: Request) {
+export async function GET(_req: Request) {
   try {
     const session = await getServerSession(authOptions);
 
