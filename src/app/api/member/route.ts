@@ -24,7 +24,7 @@ export async function GET() {
         const allMembers = await pool.query("SELECT * FROM users");
         return NextResponse.json({ members: allMembers.rows, role: result.rows[0].role });
       default:
-        const basicMembers = await pool.query("SELECT name FROM users");
+        const basicMembers = await pool.query("SELECT name, student_id FROM users");
         return NextResponse.json({ members: basicMembers.rows, role: result.rows[0].role });
     }
   } catch (error) {
