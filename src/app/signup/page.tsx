@@ -3,6 +3,7 @@
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { Input } from '@heroui/input'
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -62,13 +63,14 @@ export default function Signup() {
         <h1 className="text-2xl font-bold mb-4 text-center">サインアップ</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block font-medium mb-1">メールアドレス</label>
-            <input
+            <Input
+              id="email"
+              label="メールアドレス"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
+              // className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
           </div>
 
