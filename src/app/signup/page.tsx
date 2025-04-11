@@ -64,57 +64,51 @@ export default function Signup() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <Input
-              id="email"
               label="メールアドレス"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              // className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block font-medium mb-1">クラス名</label>
-            <input
+            <Input
+              label="クラス"
               type="text"
               value={classname}
               onChange={(e) => setClassname(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block font-medium mb-1">出席番号</label>
-            <input
+            <Input
+              label="出席番号"
               type="text"
               value={classnumber}
               onChange={(e) => setClassnumber(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block font-medium mb-1">学籍番号</label>
-            <input
+            <Input
+              label="学籍番号"
               type="text"
               value={studentid}
               onChange={(e) => setStudentid(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block font-medium mb-1">名前</label>
-            <input
+            <Input
+              label="名前"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none"
             />
           </div>
 
