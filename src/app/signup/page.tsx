@@ -115,7 +115,7 @@ export default function Signup() {
           <div className="flex justify-center mt-10">
             <button
               type="submit"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-gradient-to-l from-[#29323c] to-[#485563] px-10 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
+              className="inline-flex h-12 items-center justify-center rounded-md bg-linear-to-l from-[#29323c] to-[#485563] px-10 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
             >
               登録
             </button>
