@@ -61,7 +61,7 @@ export default function Signup() {
         </div>
         <title>サインアップ</title>
         <h1 className="text-2xl font-bold mb-4 text-center">サインアップ</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <Input
               label="メールアドレス"
@@ -71,6 +71,7 @@ export default function Signup() {
               required
             />
           </div>
+
 
           <div>
             <Input
