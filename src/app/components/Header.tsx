@@ -25,6 +25,11 @@ const Header = () => {
             <span className="mx-3">Project</span>
             </Link>
           </li>
+          <li>
+            <Link href="/blog" className="text-gray-500  rounded-lg p-2 hover:bg-black hover:text-white transition duration-300 ease-in-out">
+            <span className="mx-3">Blog</span>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
