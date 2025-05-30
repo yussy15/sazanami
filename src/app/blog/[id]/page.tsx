@@ -1,4 +1,5 @@
 import { Post } from '../../../app/lib/interface/Post';
+import ReactMarkdown from 'react-markdown';
 
 async function getPost(id: string): Promise<Post | null> {
   const res = await fetch(`http://localhost:3000/api/posts/${id}`, { cache: 'no-store' });
@@ -23,7 +24,9 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
       <p className="text-gray-600 mb-4">
         {post.author} - {new Date(post.createdAt).toLocaleDateString()}
       </p>
-      <div className="prose lg:prose-xl">{post.content}</div>
+      <div className="prose lg:prose-xl">
+        <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
     </div>
   );
 }

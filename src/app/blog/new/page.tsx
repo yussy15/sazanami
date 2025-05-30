@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Header from '../../components/Header'; // 追加
 
 export default function NewPost() {
   const [title, setTitle] = useState('');
@@ -29,6 +30,7 @@ export default function NewPost() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Header /> {/* ここを追加 */}
       <h1 className="text-3xl font-bold mb-4">新規投稿作成</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
