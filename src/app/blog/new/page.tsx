@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Header from '../../components/Header'; // 追加
+import { useSession } from 'next-auth/react';
 
 export default function NewPost() {
   const [title, setTitle] = useState('');
@@ -30,7 +30,6 @@ export default function NewPost() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Header /> {/* ここを追加 */}
       <h1 className="text-3xl font-bold mb-4">新規投稿作成</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -57,6 +56,7 @@ export default function NewPost() {
         </div>
         <div>
           <label htmlFor="author" className="block mb-2">著者</label>
+          {/* <label htmlFor="author" className="block mb-2"><{session?.user?.name}/label> */}
           <input
             type="text"
             id="author"
