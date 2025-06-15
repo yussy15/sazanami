@@ -38,3 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## 追加項目
 記事の投稿、閲覧
+
+### seed.jsとUserテーブルについて
+これは試しとして追加しただけなので無視してください
+実際はログインユーザを引っ張ってくる予定です
