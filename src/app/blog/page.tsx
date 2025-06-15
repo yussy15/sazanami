@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Post } from '../../app/lib/interface/Post';
 import Header from '../components/Header';
 import styles from '../../styles/blog.module.css';
+import BlogPostItem from './blogPostItem';
 
 async function getPosts(): Promise<Post[]> {
   const res = await fetch('http://localhost:3000/api/posts', { cache: 'no-store' });
@@ -19,15 +20,11 @@ export default async function BlogList() {
     <div className={styles.container}>
       <Header />
       <h1 className={styles.title}>ブログ投稿一覧</h1>
-      <ul className="space-y-4">
+      <ul className="space-y-4 ${styles.postLIst}">
         {posts.map((post: Post) => (
-          <li key={post.id} className="border p-4 rounded-lg">
-            <Link href={`/blog/${post.id}`} className="text-xl font-semibold text-blue-600 hover:underline">
-              {post.title}
-            </Link>
-            <p className={styles.subtitle}>{post.author} - {new Date(post.createdAt).toLocaleDateString()}</p>
-          </li>
+          <BlogPostItem key={post.id} post={post} />
         ))}
+
       </ul>
     </div>
   );

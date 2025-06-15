@@ -26,6 +26,12 @@
   margin-left: 0;
 }
 
+.postList {
+  width: 33.333%;
+  max-width: 500px;
+  min-width: 300px;
+}
+
 @media (max-width: 600px) {
   .title {
     font-size: 2rem;
@@ -33,5 +39,9 @@
   .subtitle {
     font-size: 1rem;
     max-width: 100%;
+  }
+  .postList {
+    width: 90%;
+    min-width: unset;
   }
 }
