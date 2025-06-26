@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import Header from '../../components/Header';
 import styles from '../../../styles/blog.module.css';
+import { useSession } from 'next-auth/react';
 
 export default function PreviewPost() {
   const [title, setTitle] = useState('');

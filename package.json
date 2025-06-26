@@ -18,7 +18,9 @@
     "pg": "^8.14.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "zenn-content-css": "^0.1.161",
+    "zenn-markdown-html": "^0.1.161"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -34,6 +36,6 @@
     "typescript": "^5"
   },
   "prisma": {
-    "seed" : "node prisma/seed.js"
+    "seed": "node prisma/seed.js"
   }
 }
