@@ -78,8 +78,9 @@ export default function PreviewPost() {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <Header />
+      <div className={`${styles.container} mt-16`}>
       <h1 className={styles.title}>投稿プレビュー</h1>
       
       <div className="w-full max-w-4xl bg-white p-6 rounded-lg shadow-lg">
@@ -121,6 +122,7 @@ export default function PreviewPost() {
         >
           {isSubmitting ? '投稿中...' : '投稿する'}
         </button>
+      </div>
       </div>
     </div>
   );

@@ -63,8 +63,9 @@ export default function NewPost() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div>
       <Header />
+      <div className="container mx-auto px-4 py-8 mt-16">
       <h1 className="text-3xl font-bold mb-4">新規投稿作成</h1>
       <form onSubmit={handlePreview} className="space-y-4">
         <div>
@@ -115,6 +116,7 @@ export default function NewPost() {
           {isSubmitting ? '処理中...' : 'プレビューを確認'}
         </button>
       </form>
+      </div>
     </div>
   );
 }

@@ -19,6 +19,7 @@ export default async function BlogList() {
   return (
     <div className={styles.container}>
       <Header />
+      <div className = "mt-16">
       <h1 className={styles.title}>ブログ投稿一覧</h1>
       <ul className="space-y-4 ${styles.postLIst}">
         {posts.map((post: Post) => (
@@ -26,6 +27,7 @@ export default async function BlogList() {
         ))}
 
       </ul>
+      </div>
     </div>
   );
 }
