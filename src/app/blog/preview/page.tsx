@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
+import markdownToHtml from 'zenn-markdown-html';
 import Header from '../../components/Header';
 import styles from '../../../styles/blog.module.css';
 import { useSession } from 'next-auth/react';
@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 export default function PreviewPost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [htmlContent, setHtmlContent] = useState('');
   const [author, setAuthor] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -17,9 +18,26 @@ export default function PreviewPost() {
 
   useEffect(() => {
     // URLパラメータから投稿データを取得
-    setTitle(searchParams.get('title') || '');
-    setContent(searchParams.get('content') || '');
-    setAuthor(searchParams.get('author') || '');
+    const titleParam = searchParams.get('title') || '';
+    const contentParam = searchParams.get('content') || '';
+    const authorParam = searchParams.get('author') || '';
+    
+    setTitle(titleParam);
+    setContent(contentParam);
+    setAuthor(authorParam);
+
+    // マークダウンをHTMLに変換
+    if (contentParam) {
+      try {
+        const html = markdownToHtml(contentParam, {
+          embedOrigin: 'https://embed.zenn.studio',
+        });
+        setHtmlContent(html);
+      } catch (error) {
+        console.error('Markdown conversion error:', error);
+        setHtmlContent('<p>マークダウンの変換でエラーが発生しました。</p>');
+      }
+    }
   }, [searchParams]);
 
   const handleConfirm = async () => {
@@ -72,8 +90,11 @@ export default function PreviewPost() {
           </p>
         </div>
         
-        <div className="prose lg:prose-xl max-w-none">
-          <ReactMarkdown>{content}</ReactMarkdown>
+        <div className="znc">
+          <div 
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+            className="zenn-content"
+          />
         </div>
       </div>
 

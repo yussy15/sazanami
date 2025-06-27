@@ -1,4 +1,5 @@
 import './globals.css'
+import 'zenn-content-css';
 
 export const metadata = {
   title: 'Next.js',
