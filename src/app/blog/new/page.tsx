@@ -93,6 +93,8 @@ export default function NewPost() {
           ></textarea>
         </div>
         <div>
+          {/* <label htmlFor="author" className="block mb-2">{session?.user?.name}</label> */}
+
           <label htmlFor="author" className="block mb-2">著者</label>
           <input
             type="text"
