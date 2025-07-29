@@ -39,6 +39,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## 追加項目
 記事の投稿、閲覧
 
-### seed.jsとUserテーブルについて
-これは試しとして追加しただけなので無視してください
-実際はログインユーザを引っ張ってくる予定です
+## DBについて
+VercelのDBを使用してる
+VercelのStorageから``.env.local``を.envに書き込んでローカルでは使用している
+
+## Prisma
+Prismaを使ってデータベースからデータを持ってきている
+``npx prisma migrate dev``でマイグレーションができる（DBスキーマ作成・更新）
+
+何かあったら連絡してください:w
+
