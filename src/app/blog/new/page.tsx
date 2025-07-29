@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef} from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Header from '../../components/Header';
@@ -12,16 +12,34 @@ export default function NewPost() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+
+    if(textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+    }
+  };
 
   useEffect(() => {
-    if (searchParams.get('title')) {
+    if (textareaRef.current && content) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+    }
+  },[content]);
+  
+  useEffect(() => {
+      if (searchParams.get('title')) {
       setTitle(searchParams.get('title') || '');
       setContent(searchParams.get('content') || '');
       setAuthor(searchParams.get('author') || '');
     }
   }, [searchParams]);
   
-  const handlePreview = (e: React.FormEvent) => {
+ 
+   const handlePreview = (e: React.FormEvent) => {
     e.preventDefault();
 
     const params = new URLSearchParams({
@@ -83,13 +101,19 @@ export default function NewPost() {
         <div>
           <label htmlFor="content" className="block mb-2">内容</label>
           <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="w-full px-3 py-2 border rounded-lg"
-            rows={5}
-            required
-            disabled={isSubmitting}
+          ref = {textareaRef}
+          id = "content"
+          value = {content}
+          onChange = {handleContentChange}
+          className = "w-full px-3 py-2 border rounded-lg resize-none overflow-hidden min-h-32"
+          required
+          disabled={isSubmitting}
+            // id="content"
+            // value={content}
+            // onChange={(e) => setContent(e.target.value)}
+            // className="w-full px-3 py-2 border rounded-lg resize-y min-h-32"
+            // required
+            // disabled={isSubmitting}
           ></textarea>
         </div>
         <div>
