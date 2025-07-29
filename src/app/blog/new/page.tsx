@@ -108,12 +108,6 @@ export default function NewPost() {
           className = "w-full px-3 py-2 border rounded-lg resize-none overflow-hidden min-h-32"
           required
           disabled={isSubmitting}
-            // id="content"
-            // value={content}
-            // onChange={(e) => setContent(e.target.value)}
-            // className="w-full px-3 py-2 border rounded-lg resize-y min-h-32"
-            // required
-            // disabled={isSubmitting}
           ></textarea>
         </div>
         <div>
